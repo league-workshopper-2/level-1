@@ -39,20 +39,20 @@ JButton three;
 		frame.pack();
 	}
 	void showDucks() {
-		playVideo("Drirjl5K9Yk");
+		playVideo("https://www.youtube.com/watch?v=7dS9lSptc6Q");
 	}
 
 	void showFrog() {
-		playVideo("aSjCb-FfxhI");
+		playVideo("https://www.youtube.com/watch?v=tYKPdNvH800");
 	}
 	
 	void showFluffyUnicorns() {
-		playVideo("qRC4Vk6kisY");
+		playVideo("https://www.youtube.com/watch?v=qRC4Vk6kisY");
 	}
 
 	void playVideo(String videoID) {
 		try {
-	URI uri = new URI("https://www.youtube.com/v/" + videoID + "?autoplay=1");
+	URI uri = new URI(videoID + "?autoplay=1");
 			java.awt.Desktop.getDesktop().browse(uri);
 		} catch (Exception e) {
 			e.printStackTrace();
