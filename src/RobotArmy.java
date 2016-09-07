@@ -1,6 +1,7 @@
 
 public class RobotArmy {
 	public static void main(String[] asd){
+		
 		//1. create a new human
 Human human=new Human("Haris");
 		//2. create a new Robot army of good and evil robots.
@@ -58,6 +59,9 @@ class Robot {
 		}
 		else{
 			System.out.println("No!! The robot " + name + " loves " +man.getName());
-		}
+	}
+	}
+	void setRobot(String name){
+	this.Robot=obot;
 	}
 }
