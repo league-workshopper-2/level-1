@@ -5,5 +5,7 @@ public class Casino {
 		Casino slot = new Casino();
 		SlotMachine machine = new SlotMachine();
 		machine.bet();
+		machine.randNums();
+		machine.win();
 	}
 }
