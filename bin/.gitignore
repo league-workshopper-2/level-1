@@ -1,4 +1,5 @@
 /.DS_Store
+/BasketBall.jpg
 /Casino.class
 /Cat.class
 /Classmate.class
@@ -15,6 +16,7 @@
 /Human.class
 /LandOfTurtles.class
 /LatestTweet.class
+/Matching.class
 /Monster.class
 /Movie.class
 /MovieRunner.class
@@ -25,6 +27,8 @@
 /SimonSaysRecipe.class
 /SlotMachine.class
 /Smurf.class
+/SocerBall.jpg
+/Timer.class
 /WhackAMole.class
 /WordFinder.class
 /arrowdown.jpg
@@ -43,7 +47,7 @@
 /spongebobrunner.class
 /witch.wav
 /zombie.mp3
-/Matching.class
-/SocerBall.jpg
-/BasketBall.jpg
-/Timer.class
+/Menu.class
+/Controller.class
+/Model.class
+/Restaurant.class
