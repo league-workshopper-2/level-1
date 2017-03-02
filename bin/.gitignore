@@ -3,6 +3,7 @@
 /Casino.class
 /Cat.class
 /Classmate.class
+/Controller.class
 /CowTimer.class
 /CutenessTV.class
 /DuellingButtons.class
@@ -17,11 +18,14 @@
 /LandOfTurtles.class
 /LatestTweet.class
 /Matching.class
+/Menu.class
+/Model.class
 /Monster.class
 /Movie.class
 /MovieRunner.class
 /NetflixQueue.class
 /PhotoQuiz.class
+/Restaurant.class
 /Robot2.class
 /RobotArmy.class
 /SimonSaysRecipe.class
@@ -47,7 +51,4 @@
 /spongebobrunner.class
 /witch.wav
 /zombie.mp3
-/Menu.class
-/Controller.class
-/Model.class
-/Restaurant.class
+/Calculator/
