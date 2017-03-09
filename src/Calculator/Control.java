@@ -13,7 +13,6 @@ Control(Model model,View view){
 	this.model=model;
 	view.addListeners(this);
 }
-
 @Override
 public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
