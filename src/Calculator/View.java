@@ -1,6 +1,7 @@
 package Calculator;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -71,5 +72,23 @@ public class View {
 		b15.setText("+");
 		b16.setText("=");
 		f.pack();
+	}
+	void addListeners(ActionListener action){
+		b1.addActionListener(action);
+		b2.addActionListener(action);
+		b3.addActionListener(action);
+		b4.addActionListener(action);
+		b5.addActionListener(action);
+		b6.addActionListener(action);
+		b7.addActionListener(action);
+		b8.addActionListener(action);
+		b9.addActionListener(action);
+		b10.addActionListener(action);
+		b11.addActionListener(action);
+		b12.addActionListener(action);
+		b13.addActionListener(action);
+		b14.addActionListener(action);
+		b15.addActionListener(action);
+		b16.addActionListener(action);
 	}
 }
