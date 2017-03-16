@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class View {
+	Model model;
 	JPanel p=new JPanel();
 	JFrame f=new JFrame();
 	JButton b1=new JButton();
@@ -31,7 +32,8 @@ public class View {
 	JLabel l2=new JLabel();
 	JLabel l3=new JLabel();
 	JLabel l4=new JLabel();
-	public View(){
+	public View(Model model){
+		this.model=model;
 		f.setVisible(true);
 		f.add(p);
 		p.setLayout(new GridLayout(5,4));
@@ -72,6 +74,12 @@ public class View {
 		b15.setText("+");
 		b16.setText("=");
 		f.pack();
+	}
+	void update(){
+		l1.setText(model.getFirstNum());
+		l2.setText(model.getOperator());
+		l3.setText(model.getSecondNum());
+		l4.setText(model.getAnswer()+"");
 	}
 	void addListeners(ActionListener action){
 		b1.addActionListener(action);

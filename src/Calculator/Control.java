@@ -18,6 +18,7 @@ public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
 	JButton b1=(JButton)(e.getSource());
 	String text=b1.getText();
-	System.out.println(text);
+	model.addADigit(text);
+	view.update();
 }
 }
