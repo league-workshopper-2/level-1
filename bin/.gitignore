@@ -20,6 +20,7 @@
 /LatestTweet.class
 /Matching.class
 /Menu.class
+/MethodMaker.class
 /Model.class
 /Monster.class
 /Movie.class
@@ -44,13 +45,12 @@
 /chuckleclicker.class
 /clown.wav
 /cow.wav
+/getFriends.class
 /gridworld.class
 /house.class
 /lottery_button.class
 /smurfs.class
-/witch.wav
-/zombie.mp3
 /spongebob.class
 /spongebobrunner.class
-/MethodMaker.class
-/getFriends.class
+/witch.wav
+/zombie.mp3
