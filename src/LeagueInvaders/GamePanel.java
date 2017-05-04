@@ -1,5 +1,7 @@
 package LeagueInvaders;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,16 +13,20 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener {
-	
+	final int MENU_STATE = 0;
+		final int GAME_STATE = 1;
+		final int END_STATE = 2;
+		int currentState=MENU_STATE;
+		Font titleFont;
+		Font titleFont2;
 	Timer timer;
 	GamePanel() {
 		timer = new Timer(1000 / 60, this);
-		final int MENU_STATE = 0;
-		final int GAME_STATE = 1;
-		final int END_STATE = 2;
-		final int current_State=0;
+		titleFont=new Font("Arial", Font.PLAIN, 48);
+		titleFont2=new Font("Arial", Font.PLAIN, 25);
 		
 	}
+
 void updateMenuState(){
 	
 }
@@ -30,21 +36,50 @@ void updateGameState(){
 void updateEndState(){
 	
 }
-void drawMenuState(){
+void drawMenuState(Graphics g){
+	g.setColor(Color.BLUE);
+	g.fillRect(0, 0, 500, 800);
+	g.setFont(titleFont);
+	g.setColor(Color.WHITE);
+	g.drawString("LEAGUE INVADERS", 26, 200);
+	g.setFont(titleFont2);
+	g.drawString("Press ENTER to start", 120,300);
+	g.drawString("Press SPACE for instructions", 85, 400);
 	
 }
-void drawGameState(){
-	
+void drawGameState(Graphics g){
+	g.setColor(Color.BLACK);
+	g.fillRect(0, 0, 500, 800);
+}
+void drawEndState(Graphics g){
+	g.setColor(Color.RED);
+	g.fillRect(0, 0, 500, 800);
+	g.setFont(titleFont);
+	g.setColor(Color.BLACK);
+	g.drawString("GAME OVER", 20, 20);
 }
 	public void paintComponent(Graphics g) {
-		
+		if(currentState == MENU_STATE){
+			drawMenuState(g);
+		}else if(currentState == GAME_STATE){
+			drawGameState(g);
+		}else if(currentState == END_STATE){
+			drawEndState(g);
+		}
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		repaint();
-		
+		if(currentState == MENU_STATE){
+			updateMenuState();
+		}else if(currentState == GAME_STATE){
+			updateGameState();
+		}else if(currentState == END_STATE){
+			updateEndState();
+		}
+
 	}
 
 	void StartGame() {
@@ -61,6 +96,11 @@ void drawGameState(){
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println("press");
+		currentState+=1;
+		if(currentState > END_STATE){
+			currentState = MENU_STATE;
+		}
+
 	}
 
 	@Override
