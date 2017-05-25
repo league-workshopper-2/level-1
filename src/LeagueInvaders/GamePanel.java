@@ -38,6 +38,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 
 	void updateGameState() {
 		manager.update();
+		manager.manageEnemies();
 	}
 
 	void updateEndState() {
@@ -60,6 +61,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, 500, 800);
 		manager.draw(g);
+		manager.checkCollision();
+		if (rocket.isAlive=false) {
+			currentState=END_STATE;
+		}
 	}
 
 	void drawEndState(Graphics g) {
@@ -113,7 +118,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 			currentState = MENU_STATE;
 		}
 	if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-		manager.addObject(new Projectile(rocket.x, rocket.y, 10, 10));
+		manager.addObject(new Projectiles(rocket.x,rocket.y, 10, 10));
 	}
 	}
 

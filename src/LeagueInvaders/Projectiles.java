@@ -6,9 +6,11 @@ import java.awt.Graphics;
 public class Projectiles extends GameObject{
 int speed;
 	Projectiles(int x, int y, int width, int height){
-	speed=25;
+	super();
+		speed=25;
 }
 	void update(){
+		super.update();
 		y-=speed;
 		if (y<0) {
 			isAlive=false;
