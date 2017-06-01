@@ -11,7 +11,7 @@ Rocketship(int x, int y, int width, int height){
 		this.y=y;
 		this.width=width;
 		this.height=height;
-		speed=10;
+		speed=5;
 	}
 
 void update(){

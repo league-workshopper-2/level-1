@@ -24,6 +24,7 @@ public class ObjectManager {
 		for (int i = 0; i < objects.size(); i++) {
 			GameObject o = objects.get(i);
 			o.update();
+			
 		}
 		
 		purgeObjects();	
@@ -77,8 +78,8 @@ public class ObjectManager {
 	}
 	
 	public int getScore(){
-		return score;
 		
+		return score;
 	}
 	
 	public void setScore(int s){

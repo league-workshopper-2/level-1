@@ -30,6 +30,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		titleFont2 = new Font("Arial", Font.PLAIN, 25);
 		rocket = new Rocketship(225, 700, 50, 50);
 		manager.addObject(rocket);
+		
+		
 	}
 
 	void updateMenuState() {
@@ -39,6 +41,14 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	void updateGameState() {
 		manager.update();
 		manager.manageEnemies();
+		rocket.update();
+		
+		if (rocket.isAlive=false) {
+			currentState=END_STATE;
+			manager.reset();
+			rocket = new Rocketship(225, 700, 50, 50);
+			manager.addObject(rocket);
+		}
 	}
 
 	void updateEndState() {
@@ -62,6 +72,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.fillRect(0, 0, 500, 800);
 		manager.draw(g);
 		manager.checkCollision();
+		rocket.draw(g);
 		if (rocket.isAlive=false) {
 			currentState=END_STATE;
 		}
@@ -73,6 +84,8 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		g.setFont(titleFont);
 		g.setColor(Color.BLACK);
 		g.drawString("GAME OVER", 90, 60);
+		String score=Integer.toString(manager.getScore());
+		g.drawString(score, 230, 150);
 	}
 
 	public void paintComponent(Graphics g) {
@@ -113,11 +126,17 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println("press");
+		if (e.getKeyCode()==KeyEvent.VK_ENTER) {
 		currentState += 1;
 		if (currentState > END_STATE) {
 			currentState = MENU_STATE;
+	}
+		else if (currentState==END_STATE) {
+			currentState=MENU_STATE;
+		}
 		}
 	if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+		System.out.println("space");
 		manager.addObject(new Projectiles(rocket.x,rocket.y, 10, 10));
 	}
 	}
