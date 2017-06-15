@@ -8,6 +8,7 @@ Controller(Menu view, Model data){
 	this.view=view;
 	this.data=data;
 	setup();
+	view.addListener(this);
 }
 void setup(){
 	String item1=data.getitem1();
@@ -23,6 +24,6 @@ void setup(){
 @Override
 public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
-	view.addListener(this);
+	data.check(view.getOrder());
 }
 }

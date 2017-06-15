@@ -42,4 +42,8 @@ void setlable4(String food){
 void addListener(ActionListener Controller){
 	button.addActionListener(Controller);
 }
+public String getOrder(){
+	String submit = text.getText();
+return submit;
+}
 }
