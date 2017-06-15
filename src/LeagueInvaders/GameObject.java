@@ -11,7 +11,11 @@ int width;
 int height;
 boolean isAlive=true;
 Rectangle collisionBox;
-public GameObject() {
+public GameObject(int x, int y, int width, int height) {
+	this.x=x;
+	this.y=y;
+	this.width=width;
+	this.height=height;
 	this.collisionBox=new Rectangle();
 }
 void update(){

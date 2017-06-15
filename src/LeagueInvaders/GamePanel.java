@@ -7,7 +7,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -21,6 +24,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	Font titleFont2;
 	Rocketship rocket;
 	ObjectManager manager=new ObjectManager();
+	public static BufferedImage alienImg;
+	public static BufferedImage rocketImg;
+	public static BufferedImage bulletImg;
+
 
 	Timer timer;
 
@@ -30,7 +37,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		titleFont2 = new Font("Arial", Font.PLAIN, 25);
 		rocket = new Rocketship(225, 700, 50, 50);
 		manager.addObject(rocket);
-		
+		try {
+			alienImg = ImageIO.read(this.getClass().getResourceAsStream("alien.png"));
+			rocketImg = ImageIO.read(this.getClass().getResourceAsStream("rocket.png"));
+			bulletImg = ImageIO.read(this.getClass().getResourceAsStream("bullet.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		
 	}
 
@@ -42,8 +57,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		manager.update();
 		manager.manageEnemies();
 		rocket.update();
+		manager.checkCollision();
 		
-		if (rocket.isAlive=false) {
+		if (rocket.isAlive==false) {
 			currentState=END_STATE;
 			manager.reset();
 			rocket = new Rocketship(225, 700, 50, 50);
@@ -73,7 +89,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 		manager.draw(g);
 		manager.checkCollision();
 		rocket.draw(g);
-		if (rocket.isAlive=false) {
+		if (rocket.isAlive==false) {
 			currentState=END_STATE;
 		}
 	}
@@ -138,6 +154,12 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 		System.out.println("space");
 		manager.addObject(new Projectiles(rocket.x,rocket.y, 10, 10));
+	}
+	if (e.getKeyCode()==KeyEvent.VK_LEFT) {
+		rocket.x-=10;
+	}
+	if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
+		rocket.x+=10;
 	}
 	}
 
