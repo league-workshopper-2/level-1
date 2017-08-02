@@ -9,7 +9,7 @@ public class LeagueInvaders {
 	GamePanel game;
 
 public static void main(String[] args) {
-	LeagueInvaders leauge =new LeagueInvaders();
+	LeagueInvaders league=new LeagueInvaders();
 	
 }
 public LeagueInvaders(){
