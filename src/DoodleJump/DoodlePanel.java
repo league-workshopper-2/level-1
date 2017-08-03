@@ -1,69 +1,81 @@
 package DoodleJump;
 
-import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.Timer;
 
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
-import LeagueInvaders.Rocketship;
-
-
-
-public class DoodlePanel extends JPanel implements KeyListener {
+public class DoodlePanel extends JPanel implements ActionListener, KeyListener{
 	final int MENU_STATE = 0;
 	final int GAME_STATE = 1;
 	final int END_STATE = 2;
 	int currentState = MENU_STATE;
-	Font titleFont;
-	Font titleFont2;
-	Doodle doodle;
-	DoodleManager manager=new DoodleManager();
-	public static BufferedImage PlatformImg;
-	public static BufferedImage DoodlerImg;
 	Timer timer;
-	GamePanel() {
-		timer = new Timer(1000 / 60, this);
-		titleFont = new Font("Arial", Font.PLAIN, 48);
-		titleFont2 = new Font("Arial", Font.PLAIN, 25);
-		doodle = new Doodle(225, 700, 50, 50);
-		manager.addObject(doodle);
-		try {
-			PlatformImg = ImageIO.read(this.getClass().getResourceAsStream("alien.png"));
-			DoodlerImg = ImageIO.read(this.getClass().getResourceAsStream("rocket.png"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	
+public DoodlePanel() {
+	timer=new Timer(1000/60, this);
+}
+void updateMenuState(){
+	
+}
+void updateGameState(){
+	
+}
+void updateEndState(){
+	
+}
+void drawMenuState(Graphics g){
+	
+}
+void drawGameState(Graphics g){
+	
+}
+void drawEndState(Graphics g){
+	
+}
+public void paintComponent(Graphics g){
+	if (currentState == MENU_STATE) {
+		drawMenuState(g);
+	} else if (currentState == GAME_STATE) {
+		drawGameState(g);
+	} else if (currentState == END_STATE) {
+		drawEndState(g);
+	}
+}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		repaint();
+		if(currentState == MENU_STATE){
+			updateMenuState();
+		}else if(currentState == GAME_STATE){
+			updateGameState();
+		}else if(currentState == END_STATE){
+			updateEndState();
 		}
 
-
-		
 	}
-	public void StartGame() {
-		// TODO Auto-generated method stub
-		
+	void startGame(){
+		timer.start();
 	}
-
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("Typed");
 	}
-
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("Pressed");
 	}
-
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("Released");
 	}
-
 }

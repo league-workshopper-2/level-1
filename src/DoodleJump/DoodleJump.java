@@ -8,13 +8,13 @@ import LeagueInvaders.LeagueInvaders;
 
 
 public class DoodleJump {
-	public static int width=500;
+	public static int width=50;
 	public static int height=800;	
 	JFrame frame;
 	DoodlePanel game;
 
 public static void main(String[] args) {
-	LeagueInvaders leauge =new LeagueInvaders();
+	DoodleJump jump=new DoodleJump();
 	
 }
 public DoodleJump(){
@@ -27,7 +27,7 @@ void setup(){
 	frame.setVisible(true);
 	frame.setSize(LeagueInvaders.width, LeagueInvaders.height);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	game.StartGame();
+	game.startGame();
 	frame.addKeyListener(game);
 }
 }
