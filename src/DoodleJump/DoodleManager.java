@@ -46,7 +46,7 @@ public class DoodleManager {
 
 	public void manageEnemies(){
 		if(System.currentTimeMillis() - enemyTimer >= enemySpawnTime){
-			addObject(new Alien(new Random().nextInt(DoodleJump.width), 0, 50, 50));
+			addObject(new Projectile(new Random().nextInt(DoodleJump.width), 0, 50, 50));
 			enemyTimer = System.currentTimeMillis();
 		}
 	}
@@ -58,15 +58,15 @@ public class DoodleManager {
 				DoodleObject o2 = objects.get(j);
 		
 				if(o1.collisionBox.intersects(o2.collisionBox)){
-					if((o1 instanceof Platform && o2 instanceof Projectiles) ||
-					   (o2 instanceof Platform && o1 instanceof Projectiles)){
+					if((o1 instanceof Platform && o2 instanceof Paper) ||
+					   (o2 instanceof Platform && o1 instanceof Paper)){
 						score++;
 						System.out.println(score);
 						  o1.isAlive = false;
 						o2.isAlive = false;
 					}
-					else if((o1 instanceof Platform && o2 instanceof Rocketship) ||
-							(o2 instanceof Platform && o1 instanceof Rocketship)){
+					else if((o1 instanceof Platform && o2 instanceof Doodler) ||
+							(o2 instanceof Platform && o1 instanceof Doodler)){
 						o1.isAlive = false;
 						o2.isAlive = false;
 					}
