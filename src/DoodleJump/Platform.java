@@ -11,7 +11,7 @@ public class Platform extends DoodleObject {
 	}
 	void update(){
 		super.update();
-		y+=1;
+		y-=1;
 	}
 	void draw(Graphics g){
 		g.drawImage(DoodlePanel.platform, x, y, width, height, null);

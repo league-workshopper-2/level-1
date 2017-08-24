@@ -19,6 +19,6 @@ int speed;
 
 	void draw(Graphics g) {
 		
-		g.drawImage(DoodlePanel.paper, x, y, width, height,null);
+		g.drawImage(DoodlePanel.paper, x, y, 48, 50,null);
 	}
 }

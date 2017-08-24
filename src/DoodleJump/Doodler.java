@@ -12,6 +12,6 @@ void update(){
 	
 }
 void draw(Graphics g){
-	g.drawImage(DoodlePanel.doodler, x, y, width,height,null);
+	g.drawImage(DoodlePanel.doodler, x, 600, 100,149,null);
 }
 }

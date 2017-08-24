@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import LeagueInvaders.ObjectManager;
+import LeagueInvaders.Projectiles;
+import LeagueInvaders.Rocketship;
 
 
 public class DoodlePanel extends JPanel implements ActionListener, KeyListener{
@@ -53,7 +55,16 @@ void updateMenuState(){
 	
 }
 void updateGameState(){
-manager.update();	
+manager.update();
+manager.manageEnemies();
+doodle.update();
+manager.checkCollision();
+if (doodle.isAlive==false) {
+	currentState=END_STATE;
+	manager.reset();
+	doodle = new Doodler(225, 700, 50, 50);
+	manager.addObject(doodle);
+}
 }
 void updateEndState(){
 	
@@ -152,12 +163,18 @@ void drawGameState(Graphics g){
 	g.drawImage(background, 0, 0, DoodleJump.width,DoodleJump.height,null);
 	doodle.draw(g);
 	manager.draw(g);
+	manager.checkCollision();
+	if (doodle.isAlive==false) {
+		currentState=END_STATE;
+	}
 }
 void drawEndState(Graphics g){
 	g.drawImage(background, 0, 0, DoodleJump.width,DoodleJump.height,null);
 	g.setFont(titleFont);
 	g.setColor(Color.BLACK);
 	g.drawString("GAME OVER", 90, 60);
+	String score=Integer.toString(manager.getScore());
+	g.drawString(score, 230, 150);
 }
 public void paintComponent(Graphics g){
 	if (currentState == MENU_STATE) {
@@ -203,6 +220,10 @@ public void paintComponent(Graphics g){
 				currentState=MENU_STATE;
 			}
 			}
+		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			System.out.println("space");
+			manager.addObject(new Projectile(doodle.x,doodle.y, 10, 10));
+		}
 		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
 			doodle.x-=10;
 		}

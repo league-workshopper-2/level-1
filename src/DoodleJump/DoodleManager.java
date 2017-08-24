@@ -11,6 +11,9 @@ public class DoodleManager {
 	long enemyTimer = 0;
 	int enemySpawnTime = 1000;
 	
+	long platformTimer =0;
+	int platformSpawnTime = 3000;
+	
 	public DoodleManager() {
 		objects = new ArrayList<DoodleObject>();
 	}
@@ -25,7 +28,7 @@ public class DoodleManager {
 			o.update();
 			
 		}
-		
+		managePlatforms();
 		purgeObjects();	
 	}
 
@@ -46,11 +49,16 @@ public class DoodleManager {
 
 	public void manageEnemies(){
 		if(System.currentTimeMillis() - enemyTimer >= enemySpawnTime){
-			addObject(new Projectile(new Random().nextInt(DoodleJump.width), 0, 50, 50));
+			addObject(new Paper(new Random().nextInt(DoodleJump.width), 0, 50, 50));
 			enemyTimer = System.currentTimeMillis();
 		}
 	}
-
+	public void managePlatforms() {
+		if (System.currentTimeMillis()-platformTimer>=platformSpawnTime) {
+			addObject(new Platform(new Random().nextInt(DoodleJump.width),DoodleJump.height,113,25));
+			platformTimer= System.currentTimeMillis();
+		}
+	}
 	public void checkCollision() {
 		for (int i = 0; i < objects.size(); i++) {
 			for (int j = i + 1; j < objects.size(); j++) {
@@ -58,15 +66,15 @@ public class DoodleManager {
 				DoodleObject o2 = objects.get(j);
 		
 				if(o1.collisionBox.intersects(o2.collisionBox)){
-					if((o1 instanceof Platform && o2 instanceof Paper) ||
-					   (o2 instanceof Platform && o1 instanceof Paper)){
+					if((o1 instanceof Paper && o2 instanceof Projectile) ||
+					   (o2 instanceof Paper && o1 instanceof Projectile)){
 						score++;
 						System.out.println(score);
 						  o1.isAlive = false;
 						o2.isAlive = false;
 					}
-					else if((o1 instanceof Platform && o2 instanceof Doodler) ||
-							(o2 instanceof Platform && o1 instanceof Doodler)){
+					else if((o1 instanceof Paper && o2 instanceof Doodler) ||
+							(o2 instanceof Paper && o1 instanceof Doodler)){
 						o1.isAlive = false;
 						o2.isAlive = false;
 					}
