@@ -12,6 +12,7 @@ public class Platform extends DoodleObject {
 	void update(){
 		super.update();
 		y-=1;
+		collisionBox.setBounds(x,y,width,height);
 	}
 	void draw(Graphics g){
 		g.drawImage(DoodlePanel.platform, x, y, width, height, null);

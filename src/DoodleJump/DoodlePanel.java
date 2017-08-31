@@ -38,7 +38,7 @@ public DoodlePanel() {
 	timer=new Timer(1000/60, this);
 	titleFont = new Font("Arial", Font.PLAIN, 48);
 	titleFont2 = new Font("Arial", Font.PLAIN, 25);
-	doodle = new Doodler(225, 700, 50, 50);
+	doodle = new Doodler(225, 250, 100, 149);
 	manager.addObject(doodle);
 	try {
 		background=ImageIO.read(this.getClass().getResourceAsStream("background.png"));
