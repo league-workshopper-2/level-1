@@ -27,7 +27,7 @@ public class DoodlePanel extends JPanel implements ActionListener, KeyListener{
 	Font titleFont;
 	Font titleFont2;
 	Doodler doodle;
-	DoodleManager manager=new DoodleManager();
+	DoodleManager manager;
 	Timer timer;
 	static BufferedImage background;
 	static BufferedImage doodler;
@@ -39,7 +39,7 @@ public DoodlePanel() {
 	titleFont = new Font("Arial", Font.PLAIN, 48);
 	titleFont2 = new Font("Arial", Font.PLAIN, 25);
 	doodle = new Doodler(225, 250, 100, 149);
-	manager.addObject(doodle);
+	manager=new DoodleManager(doodle);
 	try {
 		background=ImageIO.read(this.getClass().getResourceAsStream("background.png"));
 		doodler=ImageIO.read(this.getClass().getResourceAsStream("toilet.png"));
@@ -222,7 +222,7 @@ public void paintComponent(Graphics g){
 			}
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			System.out.println("space");
-			manager.addObject(new Projectile(doodle.x,doodle.y, 10, 10));
+			manager.addObject(new Projectile(doodle.x,(int) doodle.newY, 10, 10));
 		}
 		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
 			doodle.x-=10;

@@ -11,6 +11,7 @@ public class Paper extends DoodleObject{
 	void update(){
 		super.update();
 		y+=1;
+		collisionBox.setBounds(x, y, width+10, height);
 	}
 	void draw(Graphics g){
 		g.drawImage(DoodlePanel.bullet, x, y, width, height, null);

@@ -5,7 +5,7 @@ import java.awt.Graphics;
 
 public class Doodler extends DoodleObject{
 int speed;
-double gravity = 0.01;
+double gravity = 0.05;
 double yVelocity = 0;
 int jumpPower = 20;
 double newY=0;
@@ -18,9 +18,11 @@ double newY=0;
 	}
 void update(){
 	super.update();
-	collisionBox.setBounds(x, (int)newY, width, height);
+	
 	yVelocity += gravity;
 	newY += yVelocity;
+	
+	collisionBox.setBounds(x+25, (int)newY, 50, height);
 
 }
 void draw(Graphics g){
