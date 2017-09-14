@@ -225,15 +225,21 @@ public void paintComponent(Graphics g){
 			manager.addObject(new Projectile(doodle.x,(int) doodle.newY, 10, 10));
 		}
 		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
-			doodle.x-=10;
+			doodle.left=true;
 		}
 		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
-			doodle.x+=10;
+			doodle.right=true;
 		}
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println("Released");
+		if (e.getKeyCode()==KeyEvent.VK_LEFT) {
+			doodle.left=false;
+		}
+		if (e.getKeyCode()==KeyEvent.VK_RIGHT) {
+			doodle.right=false;
+		}
 	}
 }

@@ -13,7 +13,7 @@ public class DoodleManager {
 	int enemySpawnTime = 1000;
 
 	long platformTimer = 0;
-	int platformSpawnTime =4000;
+	int platformSpawnTime =2000;
 
 	public DoodleManager(Doodler doodle) {
 		objects = new ArrayList<DoodleObject>();
@@ -85,8 +85,11 @@ public class DoodleManager {
 			if (o1.collisionBox.intersects(doodle.collisionBox)) {
 
 				if (o1 instanceof Platform) {
-					doodle.newY=o1.y-doodle.height-1;
-					doodle.yVelocity -=1.5;
+					if (doodle.newY+doodle.height<o1.y+o1.height) {
+						doodle.newY=o1.y-doodle.height-1;
+						doodle.yVelocity -=1.5;
+					}
+					
 				} else if (o1 instanceof Paper) {
 					o1.isAlive = false;
 					doodle.isAlive = false;
