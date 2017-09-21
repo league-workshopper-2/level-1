@@ -7,7 +7,7 @@ import java.util.Random;
 public class DoodleManager {
 	ArrayList<DoodleObject> objects;
 
-	private int score = 0;
+	int score = 0;
 	Doodler doodle;
 	long enemyTimer = 0;
 	int enemySpawnTime = 1000;
@@ -20,6 +20,10 @@ public class DoodleManager {
 		this.doodle = doodle;
 	}
 
+	public void setDoodler(Doodler doodle) {
+		this.doodle=doodle;
+	}
+	
 	public void addObject(DoodleObject o) {
 		objects.add(o);
 	}
@@ -106,8 +110,11 @@ public class DoodleManager {
 	public void setScore(int s) {
 		score = s;
 	}
-
+	public void resetScore() {
+		score = 0;
+	}
 	public void reset() {
 		objects.clear();
+		
 	}
 }

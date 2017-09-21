@@ -52,7 +52,7 @@ public DoodlePanel() {
 	}
 }
 void updateMenuState(){
-	
+	manager.resetScore();
 }
 void updateGameState(){
 manager.update();
@@ -62,12 +62,13 @@ manager.checkCollision();
 if (doodle.isAlive==false) {
 	currentState=END_STATE;
 	manager.reset();
-	doodle = new Doodler(225, 700, 50, 50);
-	manager.addObject(doodle);
+	doodle = new Doodler(225, 250, 100, 149);
+	manager.setDoodler(doodle);
+	
 }
 }
 void updateEndState(){
-	
+
 }
 void drawMenuState(Graphics g){
 	g.drawImage(background, 0, 0, DoodleJump.width,DoodleJump.height,null);
